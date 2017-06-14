@@ -1,8 +1,6 @@
 require 'date'
 require 'time'
 
-require "just_time/version"
-
 
 ##
 # A class to represent a time object without a date
@@ -10,6 +8,8 @@ require "just_time/version"
 #
 class JustTime
   include Comparable
+
+  VERSION = "0.1.0"
 
   attr_reader :ssm
 
@@ -22,13 +22,13 @@ class JustTime
     end
 
     def parse(string)
-      return nil if string.blank?
+      return nil if (string.nil? || string =~ /\A\s*\Z/)
 
       begin
         parts = string.split(":").map{|s| Integer(s, 10) }
         raise if parts.size < 2
       rescue
-        raise SwingShiftError,
+        raise ArgumentError,
               "Bad parameters passed to JustTime.parse - '#{string}'"
 
       end
@@ -121,7 +121,7 @@ class JustTime
   private
 
   def fail_bad_params(method, para)
-    raise SwingShiftError,
+    raise ArgumentError,
           "Bad parameters passed to JustTime.#{method} - '#{para.inspect}'",
           caller
 

@@ -1,8 +1,7 @@
 require "spec_helper"
-require 'lib/just_time'
 
 
-describe JustTime do
+RSpec.describe JustTime do
 
   let(:time1) { JustTime.parse "23:04:48" }
   let(:time2) { JustTime.parse "05:59:02" }
@@ -26,8 +25,8 @@ describe JustTime do
     end
 
     it "throws a SwingShiftError if the string cannot be parsed" do
-      expect{ JustTime.parse("foo")      }.to raise_error SwingShiftError
-      expect{ JustTime.parse("12:99:70") }.to raise_error SwingShiftError
+      expect{ JustTime.parse("foo")      }.to raise_error ArgumentError
+      expect{ JustTime.parse("12:99:70") }.to raise_error ArgumentError
     end
     
   end
@@ -78,11 +77,11 @@ describe JustTime do
     end
 
     it "raises a SwingShiftError when given bad parameters" do
-      expect{ JustTime.new         }.to raise_error SwingShiftError
-      expect{ JustTime.new "foo"   }.to raise_error SwingShiftError
-      expect{ JustTime.new 99,12   }.to raise_error SwingShiftError
-      expect{ JustTime.new 12,72   }.to raise_error SwingShiftError
-      expect{ JustTime.new 12,11,-4}.to raise_error SwingShiftError
+      expect{ JustTime.new         }.to raise_error ArgumentError
+      expect{ JustTime.new "foo"   }.to raise_error ArgumentError
+      expect{ JustTime.new 99,12   }.to raise_error ArgumentError
+      expect{ JustTime.new 12,72   }.to raise_error ArgumentError
+      expect{ JustTime.new 12,11,-4}.to raise_error ArgumentError
     end
 
     it "is fine with times > 24hrs if via a single ssm param" do

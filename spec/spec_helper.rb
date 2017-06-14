@@ -1,4 +1,5 @@
 require "bundler/setup"
+require "rspec"
 require "just_time"
 
 RSpec.configure do |config|

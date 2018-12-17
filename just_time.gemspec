@@ -4,12 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "just_time"
 
 Gem::Specification.new do |spec|
-  spec.name          = "just_time"
-  spec.version       = JustTime::VERSION
-  spec.authors       = ["Andy Jones"]
-  spec.email         = ["andy.jones@jameshall.co.uk"]
+  spec.name     = "just_time"
+  spec.version  = JustTime::VERSION
+  spec.authors  = ["Andy Jones"]
+  spec.email    = ["andy@twosticksconsulting.co.uk"]
 
-  spec.summary       = %q|a little class to handle time-without-date|
+  spec.summary  = %q|a little class to handle time-without-date|
+  spec.homepage = "https://bitbucket.org/andy-twosticks/just_time"
+  spec.license  = "MIT"
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

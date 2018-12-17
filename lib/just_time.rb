@@ -9,9 +9,9 @@ require 'time'
 class JustTime
   include Comparable
 
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 
-  attr_reader :ssm
+  attr_reader :ssm # Seconds Since Midnight
 
   class << self
 
@@ -88,6 +88,9 @@ class JustTime
   alias secs seconds
   alias second seconds
 
+  ## 
+  # If you want to turn a JustTime into a Time, you might want to supply a date.
+  #
   def to_time(date=Date.today)
     Time.new(date.year, date.month, date.day, hours, minutes, seconds)
   end

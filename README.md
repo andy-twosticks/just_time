@@ -1,8 +1,10 @@
 # JustTime
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/just_time`. To experiment with that code, run `bin/console` for an interactive prompt.
+A class to represent a time object without a date. Ruby doesn't have one, and if you don't want to
+rely on, eg, Sequel.SQLTime, then you have to roll your own.
 
-TODO: Delete this and the text above, and describe your gem
+Or you can use mine. ;)
+
 
 ## Installation
 
@@ -20,16 +22,28 @@ Or install it yourself as:
 
     $ gem install just_time
 
+
 ## Usage
 
-TODO: Write usage instructions here
+The code is very short and hopefully the whole thing is pretty obvious. Some example code:
 
-## Development
+```ruby
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+jt1 = JustTime.new("12:34:56")
+jt2 = JustTime.from_time(Time.now - 120)
+jt3 = JustTime.now
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+jt4 = jt1 - jt2
+puts jt2.to_s(:hhmm)
+date = jt2.to_time(Date.today)
 
-## Contributing
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/just_time.
+
+## Thanks
+
+This code was developed, by me, during working hours at [James Hall & Co.
+Ltd](https://www.jameshall.co.uk/). I'm incredibly greatful that they have permitted me to
+open-source it.
+
+
